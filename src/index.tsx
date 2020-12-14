@@ -1,8 +1,9 @@
+import { SnackbarProvider } from 'notistack';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { SnackbarProvider } from 'notistack';
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
+import { devToolsEnhancer } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import App from './App';
 import './index.css';
@@ -11,7 +12,10 @@ import reportWebVitals from './reportWebVitals';
 
 const store = createStore(
   rootReducers,
-  applyMiddleware(thunk)
+  compose(
+    applyMiddleware(thunk),
+    devToolsEnhancer({}),
+  ),
 );
 
 ReactDOM.render(
