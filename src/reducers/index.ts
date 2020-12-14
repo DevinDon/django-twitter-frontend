@@ -6,6 +6,6 @@ export interface ActionType<T, P = any> {
   payload: P;
 }
 
-export const rootReducers = combineReducers({
-  noticeReducer: accountReducer
-});
+export type AppState = ReturnType<typeof rootReducers>;
+
+export const rootReducers = combineReducers({ accountReducer });

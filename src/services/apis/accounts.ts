@@ -1,6 +1,11 @@
 import { SERVER } from '../../constants';
 import { axios } from './interceptors';
 
+export interface User {
+  username: string;
+  avatar: string;
+}
+
 export interface ParamsLogin {
   username: string;
   password: string;
@@ -8,10 +13,7 @@ export interface ParamsLogin {
 
 export interface ReturnLogin {
   token: string;
-  user: {
-    username: string;
-    avatar: string;
-  }
+  user: User;
 }
 
 export async function login({ username, password }: ParamsLogin): Promise<ReturnLogin> {

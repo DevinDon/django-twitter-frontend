@@ -3,10 +3,11 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { useSnackbar } from 'notistack';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import { loginAction } from '../../actions';
-import { ParamsLogin } from '../../services/apis';
+import { AppState } from '../../reducers';
+import { ParamsLogin, User } from '../../services/apis';
 import styles from './index.module.css';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
@@ -22,6 +23,7 @@ export default function LoginPage({ history }: { history: any }) {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
+  const { user: { username } } = useSelector<AppState, { user: User }>(state => state.accountReducer);
   const { register, handleSubmit, errors, setValue } = useForm<ParamsLogin>();
 
   const setUsername = (username: string) => setValue('username', username);
@@ -58,13 +60,16 @@ export default function LoginPage({ history }: { history: any }) {
   const handleLogin = async (data: ParamsLogin) => {
     try {
       await dispatch(loginAction(data));
-      enqueueSnackbar('登录成功，正在进入……', { variant: 'success', autoHideDuration: 5000 });
+      enqueueSnackbar(`欢迎回来，${username}！`, { variant: 'success', autoHideDuration: 3000 });
       history.push('/');
     } catch (error) {
       let message = '';
       switch (error.response.status) {
         case 400:
           message = '用户名或密码错误';
+          break;
+        case 403:
+          message = '用户认证失败，请检查缓存';
           break;
         default:
           message = '登录失败，请稍后重试';

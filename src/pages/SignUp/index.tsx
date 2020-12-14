@@ -3,10 +3,11 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { useSnackbar } from 'notistack';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import { signUpAction } from '../../actions';
-import { ParamsSignUp } from '../../services/apis';
+import { AppState } from '../../reducers';
+import { ParamsSignUp, User } from '../../services/apis';
 import styles from './index.module.css';
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
@@ -22,6 +23,7 @@ export default function SignUpPage({ history }: { history: any }) {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
+  const { user: { username } } = useSelector<AppState, { user: User }>(state => state.accountReducer);
   const { register, handleSubmit, watch, errors, setValue } = useForm<ParamsSignUp>();
 
   const setEmail = (email: string) => setValue('email', email);
@@ -84,7 +86,7 @@ export default function SignUpPage({ history }: { history: any }) {
   const handleSignUp = async (data: ParamsSignUp) => {
     try {
       await dispatch(signUpAction(data));
-      enqueueSnackbar('注册成功，正在进入……', { variant: 'success', autoHideDuration: 5000 });
+      enqueueSnackbar(`${username}，欢迎加入！`, { variant: 'success', autoHideDuration: 5000 });
       history.push('/');
     } catch (error) {
       console.log(error)
