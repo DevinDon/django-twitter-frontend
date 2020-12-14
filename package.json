@@ -35,8 +35,12 @@
     "typescript": "^4.0.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "BROWSER=none react-scripts start",
+    "build": "bash script/build.sh",
+    "build:demo": "TARGET=DEMO npm run build",
+    "push": "bash script/push.sh",
+    "pack": "npm run build && npm run push",
+    "pack:demo": "npm run build:demo && npm run push",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
