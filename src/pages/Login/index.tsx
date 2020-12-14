@@ -58,6 +58,7 @@ export default function LoginPage({ history }: { history: any }) {
   const handleLogin = async (data: ParamsLogin) => {
     try {
       await dispatch(loginAction(data));
+      enqueueSnackbar('登录成功，正在进入……', { variant: 'success', autoHideDuration: 5000 });
       history.push('/');
     } catch (error) {
       let message = '';

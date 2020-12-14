@@ -84,6 +84,7 @@ export default function SignUpPage({ history }: { history: any }) {
   const handleSignUp = async (data: ParamsSignUp) => {
     try {
       await dispatch(signUpAction(data));
+      enqueueSnackbar('注册成功，正在进入……', { variant: 'success', autoHideDuration: 5000 });
       history.push('/');
     } catch (error) {
       console.log(error)
