@@ -3,14 +3,14 @@ import { login, ParamsLogin, ParamsSignUp, signup } from '../services/apis';
 
 export function loginAction(data: ParamsLogin) {
   return async (dispatch: any) => {
-    const result = await login(data);
-    dispatch({ type: AccountType.Login, payload: result });
+    const { user } = await login(data);
+    dispatch({ type: AccountType.Login, payload: user });
   }
 }
 
 export function signUpAction(data: ParamsSignUp) {
   return async (dispatch: any) => {
-    const result = await signup(data);
-    dispatch({ type: AccountType.Signup, payload: result });
+    const { user } = await signup(data);
+    dispatch({ type: AccountType.Signup, payload: user });
   }
 }

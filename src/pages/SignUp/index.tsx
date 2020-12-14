@@ -23,7 +23,7 @@ export default function SignUpPage({ history }: { history: any }) {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
-  const { user: { username } } = useSelector<AppState, { user: User }>(state => state.accountReducer);
+  const { username } = useSelector<AppState, User>(state => state.accountReducer);
   const { register, handleSubmit, watch, errors, setValue } = useForm<ParamsSignUp>();
 
   const setEmail = (email: string) => setValue('email', email);
@@ -86,7 +86,7 @@ export default function SignUpPage({ history }: { history: any }) {
   const handleSignUp = async (data: ParamsSignUp) => {
     try {
       await dispatch(signUpAction(data));
-      enqueueSnackbar(`${username}，欢迎加入！`, { variant: 'success', autoHideDuration: 5000 });
+      enqueueSnackbar(`${username}，欢迎加入！`, { variant: 'success', autoHideDuration: 3000 });
       history.push('/');
     } catch (error) {
       console.log(error)
@@ -95,10 +95,13 @@ export default function SignUpPage({ history }: { history: any }) {
         case 400:
           message = '用户名或邮箱已被占用';
           break;
+        case 403:
+          message = '用户认证失败，请清空缓存';
+          break;
         default:
           message = '注册失败，请稍后重试';
       }
-      enqueueSnackbar(message, { variant: 'error', autoHideDuration: 5000 });
+      enqueueSnackbar(message, { variant: 'error', autoHideDuration: 3000 });
     }
   }
 

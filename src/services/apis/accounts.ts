@@ -2,8 +2,9 @@ import { SERVER } from '../../constants';
 import { axios } from './interceptors';
 
 export interface User {
-  username: string;
+  email: string;
   avatar: string;
+  username: string;
 }
 
 export interface ParamsLogin {
@@ -12,7 +13,7 @@ export interface ParamsLogin {
 }
 
 export interface ReturnLogin {
-  token: string;
+  success: boolean;
   user: User;
 }
 

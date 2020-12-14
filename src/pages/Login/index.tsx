@@ -23,7 +23,7 @@ export default function LoginPage({ history }: { history: any }) {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
-  const { user: { username } } = useSelector<AppState, { user: User }>(state => state.accountReducer);
+  const { username } = useSelector<AppState, User>(state => state.accountReducer);
   const { register, handleSubmit, errors, setValue } = useForm<ParamsLogin>();
 
   const setUsername = (username: string) => setValue('username', username);
@@ -69,12 +69,12 @@ export default function LoginPage({ history }: { history: any }) {
           message = '用户名或密码错误';
           break;
         case 403:
-          message = '用户认证失败，请检查缓存';
+          message = '用户认证失败，请清空缓存';
           break;
         default:
           message = '登录失败，请稍后重试';
       }
-      enqueueSnackbar(message, { variant: 'error', autoHideDuration: 5000 });
+      enqueueSnackbar(message, { variant: 'error', autoHideDuration: 3000 });
     }
   }
 

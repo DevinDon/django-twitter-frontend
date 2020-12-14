@@ -5,16 +5,22 @@ export enum AccountType {
   Login, Logout, Signup
 }
 
-export const accountReducer = (state: any = {}, action: ActionType<AccountType>): { user: User } => {
-  const { user } = action.payload || {};
+const INITIAL_STATE: User = {
+  avatar: 'https://i.pravatar.cc/300',
+  email: 'anonymous@jiuzhang.com',
+  username: 'anonymous',
+};
+
+export const accountReducer = (state: User = INITIAL_STATE, action: ActionType<AccountType>): User => {
+  const user = action.payload || state;
   switch (action.type) {
     case AccountType.Login:
-      return { user };
+      return user;
     case AccountType.Logout:
-      return { user };
+      return user;
     case AccountType.Signup:
-      return { user };
+      return user;
     default:
-      return { user };
+      return user;
   }
 };
