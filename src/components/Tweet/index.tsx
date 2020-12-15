@@ -19,6 +19,7 @@ export const TweetComponent = ({ tweet }: Props) => {
   }, []);
 
   return <>
+    <hr className={styles.split} />
     <div className={styles.user}>
       <Avatar className={styles.avatar} src={avatar}>R</Avatar>
       <div className={styles.info}>
