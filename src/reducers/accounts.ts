@@ -7,10 +7,13 @@ export enum AccountType {
 }
 
 const INITIAL_STATE: User = {
-  avatar: getRandomAvatar(),
+  avatar: '',
   email: 'anonymous@jiuzhang.com',
   username: 'anonymous',
 };
+
+getRandomAvatar()
+  .then(avatar => INITIAL_STATE.avatar = avatar);
 
 export const accountReducer = (state: User = INITIAL_STATE, action: ActionType<AccountType>): User => {
   const user = action.payload || state;
