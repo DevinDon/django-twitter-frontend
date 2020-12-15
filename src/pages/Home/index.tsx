@@ -1,8 +1,9 @@
 import React from 'react';
+import AppToolbar from '../../components/AppToolbar';
 import TweetComponent from '../../components/Tweet';
 import { TweetModel } from '../../services/apis/tweets';
 
-export default function HomePage() {
+export const HomePage = () => {
 
   const tweets: TweetModel[] = [
     {
@@ -80,6 +81,7 @@ export default function HomePage() {
   ];
 
   return <>
+    <AppToolbar></AppToolbar>
     {
       tweets.length
         ? tweets.map(tweet => <TweetComponent key={tweet.id} tweet={tweet}></TweetComponent>)
@@ -88,3 +90,5 @@ export default function HomePage() {
   </>;
 
 }
+
+export default HomePage;

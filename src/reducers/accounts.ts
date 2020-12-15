@@ -1,5 +1,5 @@
 import { User } from '../services/apis';
-import { getRandomGenerator } from '../utils';
+import { getRandomAvatar } from '../utils';
 import { ActionType } from './index';
 
 export enum AccountType {
@@ -7,7 +7,7 @@ export enum AccountType {
 }
 
 const INITIAL_STATE: User = {
-  avatar: getRandomGenerator(),
+  avatar: getRandomAvatar(),
   email: 'anonymous@jiuzhang.com',
   username: 'anonymous',
 };

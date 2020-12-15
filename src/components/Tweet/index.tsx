@@ -2,7 +2,7 @@ import { Avatar, Button, Typography } from '@material-ui/core';
 import { ChatBubbleOutlineOutlined, FavoriteBorderRounded, MoreHorizOutlined } from '@material-ui/icons';
 import React from 'react';
 import { TweetModel } from '../../services/apis/tweets';
-import { getRandomGenerator } from '../../utils';
+import { getRandomAvatar } from '../../utils';
 import styles from './index.module.scss';
 
 interface Props {
@@ -13,7 +13,7 @@ export default function TweetComponent({ tweet }: Props) {
 
   return <>
     <div className={styles.user}>
-      <Avatar className={styles.avatar} src={getRandomGenerator()}>R</Avatar>
+      <Avatar className={styles.avatar} src={getRandomAvatar()}>R</Avatar>
       <div className={styles.info}>
         <Typography className={styles.nickname}>{tweet.user.nickname}</Typography>
         <Typography className={styles.username}>@{tweet.user.username}</Typography>
@@ -32,7 +32,7 @@ export default function TweetComponent({ tweet }: Props) {
         startIcon={<FavoriteBorderRounded />}
         disableElevation
       >
-        456
+        {456}
       </Button>
       <Button
         // variant="outlined"
@@ -41,7 +41,7 @@ export default function TweetComponent({ tweet }: Props) {
         startIcon={<ChatBubbleOutlineOutlined />}
         disableElevation
       >
-        123
+        {123}
       </Button>
       {/* <div className={styles.grow}></div> */}
       <Button

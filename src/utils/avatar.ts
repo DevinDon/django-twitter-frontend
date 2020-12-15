@@ -2,6 +2,6 @@ import { AvatarGenerator } from 'random-avatar-generator';
 
 const generator = new AvatarGenerator();
 
-export const getRandomGenerator = () => {
+export const getRandomAvatar = () => {
   return generator.generateRandomAvatar();
 }

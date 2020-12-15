@@ -1,3 +1,4 @@
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import { SnackbarProvider } from 'notistack';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -18,13 +19,22 @@ const store = createStore(
   ),
 );
 
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: ['Fira Code', 'Fira Code VF', 'Consolas', 'Microsoft Yahei', '微软雅黑'].join(','),
+    fontSize: 12
+  }
+});
+
 ReactDOM.render(
   <Provider store={store}>
-    <SnackbarProvider maxSnack={3}>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </SnackbarProvider>
+    <ThemeProvider theme={theme}>
+      <SnackbarProvider maxSnack={3}>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </SnackbarProvider>
+    </ThemeProvider>
   </Provider>,
   document.getElementById('root')
 );
