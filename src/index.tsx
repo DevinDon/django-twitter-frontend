@@ -3,6 +3,7 @@ import { SnackbarProvider } from 'notistack';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
@@ -21,7 +22,7 @@ const store = createStore(
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: ['Fira Code', 'Fira Code VF', 'Consolas', 'Microsoft Yahei', '微软雅黑'].join(','),
+    fontFamily: ['Microsoft Yahei', 'PingFang', '微软雅黑'].join(','),
     fontSize: 12
   }
 });
@@ -31,7 +32,9 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
       <SnackbarProvider maxSnack={3}>
         <React.StrictMode>
-          <App />
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
         </React.StrictMode>
       </SnackbarProvider>
     </ThemeProvider>

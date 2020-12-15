@@ -1,10 +1,13 @@
+import { useScrollTrigger } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Avatar from '@material-ui/core/Avatar';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import React, { useEffect, useState } from 'react';
-import { getRandomAvatar } from '../../utils';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../reducers';
+import { User } from '../../services/apis';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,15 +29,15 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const AppToolbar = () => {
   const classes = useStyles();
-  const [avatar, setAvatar] = useState('');
-
-  useEffect(() => {
-    getRandomAvatar()
-      .then(avatar => setAvatar(avatar));
-  }, []);
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+    target: window,
+  });
+  const { avatar } = useSelector<AppState, User>(state => state.accountReducer);
 
   return <>
-    <AppBar position="sticky">
+    <AppBar position="sticky" elevation={trigger ? 2 : 0}>
       <Toolbar className={classes.toolbar}>
         <Avatar src={avatar} className={classes.avatar}></Avatar>
         <Typography variant="h6" className={classes.title}>Twitter</Typography>

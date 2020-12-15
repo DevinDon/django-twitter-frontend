@@ -1,5 +1,4 @@
 import React from 'react';
-import AppToolbar from '../../components/AppToolbar';
 import TweetComponent from '../../components/Tweet';
 import { TweetModel } from '../../services/apis/tweets';
 
@@ -81,7 +80,6 @@ export const HomePage = () => {
   ];
 
   return <>
-    <AppToolbar></AppToolbar>
     {
       tweets.length
         ? tweets.map(tweet => <TweetComponent key={tweet.id} tweet={tweet}></TweetComponent>)
