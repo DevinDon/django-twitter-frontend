@@ -1,13 +1,15 @@
 import { CircularProgress } from '@material-ui/core';
 import React from 'react';
-import './index.css';
+import styles from './index.module.css';
 
-export function LoadingComponent({ id }: { id: string }) {
+export const LoadingComponent = () => {
 
   return (
-    <div id={id} className="hidden">
+    <div className={styles.loading}>
       <CircularProgress />
     </div>
   );
 
 }
+
+export default LoadingComponent;
