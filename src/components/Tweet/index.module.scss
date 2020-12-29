@@ -1,60 +1,88 @@
-.user {
-  display        : flex;
-  flex-direction : row;
-  justify-content: flex-start;
-  align-items    : center;
-  margin         : 0.5rem;
+.container {
+  display       : flex;
+  flex-direction: row;
 
-  >.avatar {
-    margin: 0 0.5rem;
-  }
+  .left {
+    padding-left: 1rem;
 
-  >.info {
-    margin   : 0 0.5rem;
-    flex-grow: 1;
-
-    >.nickname {
-      font-weight: bold;
-    }
-
-    >.username {
-      color    : gray;
-      font-size: small;
+    >.avatar {
+      margin: 0.5rem;
     }
   }
 
-  >.time {
-    margin   : 0 0.5rem;
-    color    : gray;
-    font-size: small;
-  }
-}
+  .right {
+    padding-right: 1rem;
 
-.content {
-  margin: 1rem;
+    .user {
+      display        : flex;
+      flex-direction : row;
+      justify-content: flex-start;
+      align-items    : center;
+      margin         : 0.5rem;
+      margin-left    : 0;
 
-  >.text {}
+      >.info {
+        margin-right: 0.5rem;
+        flex-grow   : 1;
 
-  >.image {}
-}
+        >.nickname {
+          font-weight: bold;
+        }
 
-.action {
-  display        : flex;
-  flex-direction : row;
-  justify-content: space-between;
-  align-items    : center;
-  margin         : 0.25rem;
+        >.username {
+          color    : gray;
+          font-size: small;
+        }
+      }
 
-  >.grow {
-    flex-grow: 1;
-  }
+      >.time {
+        margin   : 0 0.5rem;
+        color    : #5b7083;
+        font-size: small;
+      }
+    }
 
-  >.button {
-    flex-grow: 1;
+    .content {
+      margin     : 0.5rem;
+      margin-left: 0;
+
+      // >.text {}
+
+      >.image {
+        width        : 100%;
+        border-radius: 1rem;
+        margin-top   : 0.5rem;
+      }
+    }
+
+    .action {
+      display        : flex;
+      flex-direction : row;
+      justify-content: space-between;
+      align-items    : center;
+      margin         : 0.25rem;
+      margin-left    : 0;
+      color          : #5b7083;
+
+      >.grow {
+        flex-grow: 1;
+      }
+
+      .button {
+        width : 18.5px;
+        height: 18.5px;
+      }
+
+      .number {
+        font-size: 13px;
+        padding  : 0 0.75rem;
+      }
+    }
   }
 }
 
 .split {
   margin      : 0;
-  border-width: 0.25px;
+  border-width: 0.025px;
+  color       : lightgray;
 }

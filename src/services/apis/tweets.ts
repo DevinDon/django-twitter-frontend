@@ -12,6 +12,7 @@ export interface TweetModel {
   content: string;
   like_count: number;
   comment_count: number;
+  cover?: string;
 }
 
 export async function getNewsfeed(): Promise<TweetModel[]> {
