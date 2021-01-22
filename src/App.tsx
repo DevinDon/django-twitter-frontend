@@ -8,7 +8,7 @@ export const App = () => {
   const { pathname } = useLocation();
   return (
     <>
-      {pathname === '/login' || pathname === '/signup' || <AppToolbar></AppToolbar>}
+      {pathname.includes('/login') || pathname.includes('/signup') || <AppToolbar></AppToolbar>}
       <Router></Router>
     </>
   );

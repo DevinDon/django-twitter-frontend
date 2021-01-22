@@ -40,7 +40,7 @@ export const AppToolbar = () => {
     <AppBar position="sticky" elevation={trigger ? 2 : 0}>
       <Toolbar className={classes.toolbar}>
         <Avatar src={avatar} className={classes.avatar}></Avatar>
-        <Typography variant="h6" className={classes.title}>Twitter</Typography>
+        <Typography variant="h6" className={classes.title}>主页</Typography>
       </Toolbar>
     </AppBar>
   </>;

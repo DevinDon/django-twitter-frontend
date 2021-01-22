@@ -32,7 +32,7 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
       <SnackbarProvider maxSnack={3}>
         <React.StrictMode>
-          <BrowserRouter>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
             <App />
           </BrowserRouter>
         </React.StrictMode>
