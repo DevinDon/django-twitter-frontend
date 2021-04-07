@@ -8,9 +8,8 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import App from './App';
+import { rootReducers } from './common/reducers';
 import './index.css';
-import { rootReducers } from './reducers';
-import reportWebVitals from './reportWebVitals';
 
 const store = createStore(
   rootReducers,
@@ -23,8 +22,8 @@ const store = createStore(
 const theme = createMuiTheme({
   typography: {
     fontFamily: ['Microsoft Yahei', 'PingFang', '微软雅黑'].join(','),
-    fontSize: 12
-  }
+    fontSize: 12,
+  },
 });
 
 ReactDOM.render(
@@ -41,8 +40,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
