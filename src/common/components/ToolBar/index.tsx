@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { useSelector } from 'react-redux';
 import { User } from '../../apis';
 import { AppState } from '../../reducers';
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,6 +24,12 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: 'white',
       color: 'black'
     },
+    goback: {
+      float: 'right',
+      fontWeight: 'bold',
+      textDecoration: 'none',
+      color: 'black'
+    }
   }),
 );
 
@@ -36,7 +43,7 @@ const Toolbar = () => {
   const { avatar } = useSelector<AppState, User>(state => state.userReducer);
 
   return <>
-    <AppBar position="sticky" elevation={trigger ? 2 : 0}>
+    <AppBar position="sticky" elevation={trigger ? 3 : 0}>
       <MaterialUIToolbar className={classes.toolbar}>
         <Avatar src={avatar} className={classes.avatar}></Avatar>
         <Typography variant="h6" className={classes.title}>主页</Typography>

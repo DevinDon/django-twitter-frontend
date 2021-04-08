@@ -1,0 +1,19 @@
+.title {
+    text-align: center;
+    font-size:26px;
+    margin-top:50px;
+}
+.icon {
+    float: left;
+    margin-right: 30px;
+    margin-left: 10px;
+    font-size: 24px;
+    color: rgb(59, 59, 247);
+}
+.topbar {
+    margin-top:10px;
+    font-size: 18px;
+    font-weight: 700;
+    height:50px;
+    border-bottom: 1px solid #ccc;
+}
